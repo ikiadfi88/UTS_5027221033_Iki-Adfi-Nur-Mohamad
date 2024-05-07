@@ -1,0 +1,49 @@
+syntax = "proto3";
+import "google/protobuf/any.proto";
+package peminjamanPackage;
+
+message Peminjaman {
+    string nama = 1;
+    string keperluan = 2;
+    string tanggalpinjam = 3;
+    string tanggalkembali = 4;
+    string alat = 5;
+    string nohp = 6;
+    string status = 7;
+      
+    
+}
+
+message PeminjamanList {
+    repeated Peminjaman peminjamans = 1;
+}
+
+message PeminjamanWithId {
+    string _id = 1;
+    string nama = 2;
+    string keperluan = 3;
+    string tanggalpinjam = 4;
+    string tanggalkembali = 5;
+    string alat = 6;
+    string nohp = 7;
+    string status = 8;
+    
+}
+
+message PeminjamanId {
+    string _id = 1;
+}
+
+message Response {
+    string status = 1;
+}
+
+message Empty {}
+
+service PeminjamanService {
+    rpc getPeminjaman (Empty) returns (PeminjamanList);
+    rpc getPeminjamanId (PeminjamanId) returns (PeminjamanWithId) {}
+    rpc createPeminjaman (Peminjaman) returns (Peminjaman);
+    rpc updatePeminjaman (PeminjamanWithId) returns (Peminjaman);
+    rpc removePeminjaman (PeminjamanId) returns (Empty);
+}
