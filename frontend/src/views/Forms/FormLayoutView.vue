@@ -26,7 +26,7 @@ export default defineComponent({
     })
 
     const submitForm = async () => {
-      const res = await axios.post('http://localhost:3000/', formData.value)
+      const res = await axios.post('http://localhost:3000/peminjamans', formData.value)
       if (res.data.success) {
         // Tampilkan pesan sukses atau lakukan tindakan lain
       } else {

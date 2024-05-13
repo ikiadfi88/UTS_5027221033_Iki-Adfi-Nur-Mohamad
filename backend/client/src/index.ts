@@ -3,7 +3,8 @@ import dotenv from "dotenv"
 import createError from "http-errors"
 import express, { NextFunction, Request } from "express"
 
-import { appListener, globalErrorHandler, port } from "./config/app.config"
+// import { appListener, globalErrorHandler, port } from "./config/app.config"
+import { appListener, port } from "./config/app.config"
 
 import allRoutes from "./routes/route"
 
@@ -26,7 +27,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use((req: Request, _, next: NextFunction) => {
   next(createError.NotFound(`Can't find ${req.originalUrl} on the server!`))
 })
-app.use(globalErrorHandler)
+// app.use(globalErrorHandler)
 
 // listener
 app.listen(port, appListener)
