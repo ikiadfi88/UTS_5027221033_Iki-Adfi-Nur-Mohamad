@@ -1,33 +1,26 @@
-import cors from "cors"
 import dotenv from "dotenv"
-import createError from "http-errors"
+import createHttpError from "http-errors"
 import express, { NextFunction, Request } from "express"
+import cors from "cors"
 
-// import { appListener, globalErrorHandler, port } from "./config/app.config"
 import { appListener, port } from "./config/app.config"
 
 import allRoutes from "./routes/route"
 
-// config
 dotenv.config()
 
 const app = express()
 
-// auth
-app.use(cors({ origin: "*" }))
-
-// routes
-app.use(allRoutes)
+app.use(cors())
 
 app.use(express.json())
 
 app.use(express.urlencoded({ extended: true }))
 
-// error handler
-app.use((req: Request, _, next: NextFunction) => {
-  next(createError.NotFound(`Can't find ${req.originalUrl} on the server!`))
-})
-// app.use(globalErrorHandler)
+app.use(allRoutes)
 
-// listener
+app.use((req: Request, _, next: NextFunction) => {
+  next(createHttpError.NotFound(`Can't find ${req.originalUrl} on the server!`))
+})
+
 app.listen(port, appListener)

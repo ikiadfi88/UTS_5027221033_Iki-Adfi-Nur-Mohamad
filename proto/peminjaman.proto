@@ -10,8 +10,6 @@ message Peminjaman {
     string alat = 5;
     string nohp = 6;
     string status = 7;
-      
-    
 }
 
 message PeminjamanList {

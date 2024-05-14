@@ -1,6 +1,7 @@
 import mongoose from "mongoose"
 
 export interface Peminjamans {
+  _id: mongoose.Types.ObjectId
   nama: string
   keperluan: string
   tanggalpinjam: string

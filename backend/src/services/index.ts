@@ -3,7 +3,6 @@ import dotenv from "dotenv"
 import * as grpc from "@grpc/grpc-js"
 import * as protoLoader from "@grpc/proto-loader"
 
-import { PORT } from "./config/app.config"
 import DBConnection from "./config/database.config"
 
 import { getPeminjaman, createPeminjaman, updatePeminjaman, removePeminjaman } from "./controller/peminjaman.controller"
@@ -12,7 +11,7 @@ dotenv.config()
 DBConnection("mongodb+srv://ikiadfi:adfinur12345@cluster0.rffgr8b.mongodb.net/")
 console.log(DBConnection)
 
-const protoPath = path.join(__dirname, "../proto/peminjaman.proto")
+const protoPath = path.join(__dirname, "../../../proto/peminjaman.proto")
 const peminjamanProto = protoLoader.loadSync(protoPath)
 const { peminjamanPackage } = grpc.loadPackageDefinition(peminjamanProto) as any
 

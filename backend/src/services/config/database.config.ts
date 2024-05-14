@@ -1,4 +1,7 @@
 import mongoose from "mongoose"
+import { mongo } from "mongoose";
+
+export const collections: { peminjamans?: mongo.Collection } = {};
 
 const connectDB = async (url: string) => {
   mongoose.set("strictQuery", false)
